@@ -107,7 +107,7 @@ const Settings = () => {
                 </CardWrapper>
 
 
-                <CardWrapper className="flex flex-col gap-y-8">
+                <CardWrapper className="flex flex-col gap-y-8 box-content">
                     <div className="flex flex-col gap-y-1">
                         <PrimaryHeading heading="Notification Preferences" className="font-bold text-lg" />
                         <SecondaryHeading heading="Manage how and when you recieve notification" className="text-gray-500 font-light text-sm" />
