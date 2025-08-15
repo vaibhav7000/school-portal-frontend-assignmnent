@@ -1,4 +1,5 @@
 import type { ComponentType, HTMLAttributes, SVGAttributes } from "react"
+import cn from "../Utils/Styles";
 
 interface IconProps {
     Element: ComponentType<SVGAttributes<SVGElement>>;
@@ -12,7 +13,7 @@ const WrapperIcon = (props: WrapperIconProps) => {
     const {Element, ElementProps} = props;
 
     return (
-        <div className={props.className}>
+        <div className={cn("h-auto w-auto", props.className)}>
             <Element {...ElementProps} />
         </div>
     )

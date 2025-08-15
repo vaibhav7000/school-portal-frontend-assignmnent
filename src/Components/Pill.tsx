@@ -7,7 +7,7 @@ interface PillProps extends React.HTMLAttributes<HTMLDivElement> {
 const Pill = (props: PillProps) => {
 
     return (
-        <div className={`${props.className} rounded-xl outline-1 outline-gray-400 py-1 px-2 cursor-pointer shadow-xl`}>
+        <div className={`rounded-xl outline-1 outline-gray-400 py-1 px-2 cursor-pointer shadow-xl ${props.className} `}>
             {props.title}
         </div>
     )

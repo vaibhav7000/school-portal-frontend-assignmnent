@@ -1,21 +1,23 @@
-import type { ComponentType, SVGAttributes } from "react";
+import type { HTMLAttributes } from "react";
 import CardWrapper from "../Wrappers/CardWrapper";
 import Text from "./Text";
 
-interface ReportCard {
-    text: string,
+export interface ReportCard {
+    text: string;
     value: number,
     increment: number,
     type: 'value' | 'percentage' | 'time' | '' | "points",
-    IconWrapper?: React.ReactElement
+    IconWrapper?: React.JSX.Element
 }   
 
-export type ReportCardsProps = ReportCard[];
+interface ReportCardsProps extends HTMLAttributes<HTMLDivElement> {
+    cards: ReportCard[]
+}
 
-const ReportCards = ({ cards }: { cards: ReportCardsProps }) => {
-
+const ReportCards = (props: ReportCardsProps) => {
+    const {cards} = props;
     return (
-        <div className="grid grid-cols-4 gap-x-4 gap-y-2">
+        <div className={props.className}>
             {cards.map(({ text, value, increment, type, IconWrapper}, index) => {
                 return (
                     <CardWrapper key={index} className="flex flex-col">
