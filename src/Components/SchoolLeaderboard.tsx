@@ -6,6 +6,7 @@ import Text from "./Text";
 import Pill from "./Pill";
 import { Eye, Star } from "lucide-react";
 import Button from "./Button";
+import ProfileCard from "./ProfileCard";
 
 
 export interface SchoolLeaderboardProps extends HTMLAttributes<HTMLDivElement> {
@@ -29,19 +30,19 @@ const SchoolLeaderboard = (props: SchoolLeaderboardProps) => {
 
     return (
        <CardWrapper icon={props.iconWrapper} postionElement={props.positionElement} className={props.className} >
-            <div className={cn("relative flex justify-center self-stretch", index < 3 && "bg-amber-200 rounded-full")}>
-                {image && <img className={cn("outline-3 outline-solid " ,index === 0 && "outline-first-position", index === 1 && "outline-second-postion", index === 2 && "outline-third-position", props.imageProps?.className)} src={image} loading="lazy"  />}
-                {!image && 
-                    <div className={cn("outline-3 outline-solid bg-blue-400 text-white font-medium text-2xl" ,index === 0 && "outline-first-position", index === 1 && "outline-second-postion", index === 2 && "outline-third-position", props.imageProps?.className)} >
-                        {`${firstname.slice(0, 1)}${lastname.slice(0, 1)}`}
-                    </div>
-                }
-                {index <= 2 && 
+            <ProfileCard firstname={props.firstname} lastname={props.lastname} image={props.image} imageProps={{
+                src: props.image,
+                className: `${cn("outline-3 outline-solid " ,index === 0 && "outline-first-position", index === 1 && "outline-second-postion", index === 2 && "outline-third-position" ,props.imageProps?.className)}`,
+                loading: "lazy",
+            }} className={cn("relative flex justify-center self-stretch", index < 3 && "bg-amber-200 rounded-full")}
+            textImageProps={{
+                className: cn("outline-3 outline-solid bg-blue-400 text-white font-medium text-2xl" ,index === 0 && "outline-first-position", index === 1 && "outline-second-postion", index === 2 && "outline-third-position", index >=3 && "outline-blue-200", props.imageProps?.className)
+            }}
+            icon={index <= 2 ?
                     <div className="absolute left-[48%] bottom-[24px]">
                         {props.iconWrapper}
-                    </div>
-                }
-            </div>
+                    </div> : undefined}
+            />
 
                 <Text className="font-semibold text-sm capitalize" text={`${firstname} ${lastname}`} />
 

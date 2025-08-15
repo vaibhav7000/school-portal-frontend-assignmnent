@@ -4,7 +4,7 @@ import SecondaryHeading from "../Components/SecondaryHeading";
 import Text from "../Components/Text";
 import ReportCards from "../Components/ReportCards";
 import type { ReportCard } from "../Components/ReportCards";
-import { BarChart, CloudLightning, Flame, GraduationCap, Hourglass, Medal, Star, Trophy, Users, Zap } from "lucide-react";
+import { BarChart, Eye, Flame, GraduationCap, Hourglass, Medal, Star, Trophy, Users, Zap } from "lucide-react";
 import WrapperIcon from "../Components/Icon";
 import PieChart from "../Graphs/PieChart";
 import type { ChartData, ChartOptions } from "chart.js";
@@ -17,6 +17,7 @@ import cn from "../Utils/Styles";
 import TopScrorerCard from "../Components/TopScorerCard";
 import Input from "../Components/Input";
 import Dropdown from "../Components/Dropdown";
+import AllStudents from "../Components/AllStudents";
 
 const Dashboard = () => {
     const date: Date = useMemo(() => {
@@ -248,7 +249,7 @@ const Dashboard = () => {
 
                 <CardWrapper className="col-start-1 col-end-3">
                     <div className="flex flex-col gap-y-12">
-                        <div className="flex flex-row justify-between">
+                        <div className="flex lg:flex-row justify-between flex-col gap-y-2">
                             <div className="flex flex-col gap-y-1">
                                 <PrimaryHeading heading="School Leaderboard - Top 10 Champions" className="capitalize bg-clip-text bg-linear-to-r from-cyan-500 to-blue-500 text-transparent font-bold text-xl" />
 
@@ -256,7 +257,7 @@ const Dashboard = () => {
                             </div>
 
                             <div className="flex gap-x-4 items-center">
-                                <Input placeholder="Search Students..." className="outline-1 outline-gray-300 rounded-md  px-10 py-4" />
+                                <Input placeholder="Search Students..." className="outline-1 outline-gray-300 rounded-md  xl:px-10 xl:py-4 px-6 py-4 grow lg:grow-0" />
 
                                 <Dropdown className="outline-1 rounded-md border-0 outline-gray-300 text-gray-500 px-2 py-2" options={[{
                                     label: "All Classes",
@@ -268,8 +269,21 @@ const Dashboard = () => {
                             </div>
                         </div>
                             
-                        <div className="grid grid-cols-4 gap-y-4">
-
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-4">
+                            {schoolLeaderboardData.map(data => {
+                                const {firstname, lastname, image, standard, accuracy, points} = data;
+                                return (
+                                    <AllStudents key={data.index} className="flex flex-row gap-x-2 items-center justify-between px-4 py-4" firstname={firstname} lastname={lastname} image={image} class={standard} accuracy={accuracy} points={points} imageProps={{
+                                        className: "h-20 w-20 rounded-full flex items-center justify-center"
+                                    }} textImageProps={{
+                                        className: "h-14 w-14 rounded-full flex items-center justify-center bg-blue-400 text-white border-2 border-white drop-shadow-xl"
+                                    }} 
+                                    Icon={<WrapperIcon Element={Eye} ElementProps={{
+                                        className: "text-gray-500 h-6 w-6"
+                                    }} className="border-1 border-gray-400 px-2 py-1 rounded-lg cursor-pointer" />}
+                                    />
+                                )
+                            })}
                         </div>
 
                     </div>

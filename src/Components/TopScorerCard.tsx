@@ -13,8 +13,10 @@ const TopScrorerCard = (props: TopScrorerCardProps) => {
     return (
         <CardWrapper className={props.className}>
             {Icon}
-            {Title}
-            {Description}
+            <div className="text-center">
+                {Title}
+                {Description}
+            </div>
         </CardWrapper>
     )
 }
