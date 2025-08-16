@@ -193,7 +193,7 @@ const Dashboard = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-                <CardWrapper className="col-start-1 col-end-3 md:col-start-1 md:col-end-2 flex flex-col gap-y-4">
+                <CardWrapper className="col-start-1 col-end-3 lg:col-start-1 lg:col-end-2 flex flex-col gap-y-4">
 
                     <div>
                         <PrimaryHeading heading="Performance Distribution" className="capitalize bg-clip-text bg-linear-to-r from-cyan-500 to-blue-500 text-transparent font-bold text-xl" />
@@ -208,7 +208,7 @@ const Dashboard = () => {
                     </div>
                 </CardWrapper>
 
-                <CardWrapper className="col-start-1 col-end-3 md:col-start-2 md:col-end-3 flex flex-col gap-y-18">
+                <CardWrapper className="col-start-1 col-end-3 lg:col-start-2 lg:col-end-3 flex flex-col gap-y-18">
                     <div>
                         <PrimaryHeading heading="Class-wise Student Enrollment" className="capitalize bg-clip-text bg-linear-to-r from-cyan-500 to-blue-500 text-transparent font-bold text-xl" />
                         <SecondaryHeading heading="Student distribution across different grades" />
