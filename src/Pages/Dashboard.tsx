@@ -18,6 +18,7 @@ import TopScrorerCard from "../Components/TopScorerCard";
 import Input from "../Components/Input";
 import Dropdown from "../Components/Dropdown";
 import AllStudents from "../Components/AllStudents";
+import CustomBarChart from "../Graphs/BarChart";
 
 const Dashboard = () => {
     const date: Date = useMemo(() => {
@@ -98,6 +99,42 @@ const Dashboard = () => {
         }
     };
 
+    const barChartData: ChartData<"bar", number[], string> = {
+        labels: [
+            "Class 1", "Class 2", "Class 3", "Class 4",
+            "Class 5", "Class 6", "Class 7", "Class 8"
+        ],
+        datasets: [{
+            label: 'Student Count',
+            data: Array.from({ length: 8 }, () => Math.floor(Math.random() * 40)),
+            backgroundColor: tailwindColos["blue"],
+        }]
+    };
+
+    const barChartOptions: ChartOptions<"bar"> = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: "bottom"
+            },
+            title: {
+                display: false,
+                position: "bottom",
+            },
+            tooltip: {
+                enabled: true
+            }
+        },
+        scales: {
+            x: {
+                beginAtZero: true,
+            },
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+
     const reportCards: ReportCard[] = useMemo(() => {
         return [{
             text: "Total Students",
@@ -155,7 +192,7 @@ const Dashboard = () => {
 
             <div className="grid grid-cols-2 gap-4">
                 <CardWrapper className="col-start-1 col-end-3 lg:col-start-1 md:col-end-2">
-
+                    <CustomBarChart data={barChartData} options={barChartOptions} />
                 </CardWrapper>
 
                 <CardWrapper className="col-start-1 col-end-3 lg:col-start-2 md:col-end-3">
@@ -211,36 +248,36 @@ const Dashboard = () => {
 
                         <div className="grid lg:grid-cols-3 md:grid-cols-2  gap-4">
                             <TopScrorerCard className="outline-2 outline-yellow-400 shadow-none rounded-2xl bg-yellow-100 flex flex-col items-center gap-y-1" Icon={<WrapperIcon Element={Trophy} ElementProps={{
-                                className:""
-                            }}/>} 
-                            Title={<Text text="Top Scorer" className="text-orange-800 font-bold text-sm" />}
+                                className: ""
+                            }} />}
+                                Title={<Text text="Top Scorer" className="text-orange-800 font-bold text-sm" />}
 
-                            Description={<div className="text-sm text-yellow-500 flex flex-row gap-1">
-                                <Text text={`${schoolLeaderboardData[0].firstname} ${schoolLeaderboardData[0].lastname} - `} />
-                                <Text text={`${schoolLeaderboardData[0].points} pts`} />
-                            </div>}
+                                Description={<div className="text-sm text-yellow-500 flex flex-row gap-1">
+                                    <Text text={`${schoolLeaderboardData[0].firstname} ${schoolLeaderboardData[0].lastname} - `} />
+                                    <Text text={`${schoolLeaderboardData[0].points} pts`} />
+                                </div>}
                             />
-                            
-                            <TopScrorerCard className="outline-2 outline-green-400 shadow-none rounded-2xl bg-green-100 flex flex-col items-center gap-y-1" Icon={<WrapperIcon Element={Flame} ElementProps={{
-                                className:"text-red-500"
-                            }}/>} 
-                            Title={<Text text="Longest Streak" className="text-green-800 font-bold text-sm" />}
 
-                            Description={<div className="text-sm text-green-500 flex flex-row gap-1">
-                                <Text text={`${schoolLeaderboardData[0].firstname} ${schoolLeaderboardData[0].lastname} - `} />
-                                <Text text={`${schoolLeaderboardData[0].streak} days`} />
-                            </div>}
+                            <TopScrorerCard className="outline-2 outline-green-400 shadow-none rounded-2xl bg-green-100 flex flex-col items-center gap-y-1" Icon={<WrapperIcon Element={Flame} ElementProps={{
+                                className: "text-red-500"
+                            }} />}
+                                Title={<Text text="Longest Streak" className="text-green-800 font-bold text-sm" />}
+
+                                Description={<div className="text-sm text-green-500 flex flex-row gap-1">
+                                    <Text text={`${schoolLeaderboardData[0].firstname} ${schoolLeaderboardData[0].lastname} - `} />
+                                    <Text text={`${schoolLeaderboardData[0].streak} days`} />
+                                </div>}
                             />
 
                             <TopScrorerCard className="outline-2 md:col-start-1 md:col-end-3 lg:col-span-1 outline-blue-400 shadow-none rounded-2xl bg-blue-100 flex flex-col items-center gap-y-1" Icon={<WrapperIcon Element={Zap} ElementProps={{
-                                className:"text-blue-400"
-                            }}/>} 
-                            Title={<Text text="Top Scorer" className="text-blue-800 font-bold text-sm" />}
+                                className: "text-blue-400"
+                            }} />}
+                                Title={<Text text="Top Scorer" className="text-blue-800 font-bold text-sm" />}
 
-                            Description={<div className="text-sm text-blue-500 flex flex-row gap-1">
-                                <Text text={`${schoolLeaderboardData[0].firstname} ${schoolLeaderboardData[0].lastname} - `} />
-                                <Text text={`${schoolLeaderboardData[0].points} pts`} />
-                            </div>}
+                                Description={<div className="text-sm text-blue-500 flex flex-row gap-1">
+                                    <Text text={`${schoolLeaderboardData[0].firstname} ${schoolLeaderboardData[0].lastname} - `} />
+                                    <Text text={`${schoolLeaderboardData[0].points} pts`} />
+                                </div>}
                             />
                         </div>
 
@@ -268,19 +305,19 @@ const Dashboard = () => {
                                 }]} />
                             </div>
                         </div>
-                            
+
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-4">
                             {schoolLeaderboardData.map(data => {
-                                const {firstname, lastname, image, standard, accuracy, points} = data;
+                                const { firstname, lastname, image, standard, accuracy, points } = data;
                                 return (
                                     <AllStudents key={data.index} className="flex flex-row gap-x-2 items-center justify-between px-4 py-4" firstname={firstname} lastname={lastname} image={image} class={standard} accuracy={accuracy} points={points} imageProps={{
                                         className: "h-20 w-20 rounded-full flex items-center justify-center"
                                     }} textImageProps={{
                                         className: "h-14 w-14 rounded-full flex items-center justify-center bg-blue-400 text-white border-2 border-white drop-shadow-xl"
-                                    }} 
-                                    Icon={<WrapperIcon Element={Eye} ElementProps={{
-                                        className: "text-gray-500 h-6 w-6"
-                                    }} className="border-1 border-gray-400 px-2 py-1 rounded-lg cursor-pointer" />}
+                                    }}
+                                        Icon={<WrapperIcon Element={Eye} ElementProps={{
+                                            className: "text-gray-500 h-6 w-6"
+                                        }} className="border-1 border-gray-400 px-2 py-1 rounded-lg cursor-pointer" />}
                                     />
                                 )
                             })}
