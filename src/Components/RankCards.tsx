@@ -13,7 +13,7 @@ import ProfileCard from "./ProfileCard";
 interface RankCard extends HTMLAttributes<HTMLDivElement> {
     firstname: string;
     lastname: string;
-    image: string;
+    image?: string;
     standard: number;
     points: number;
     accuracy: number;
@@ -36,7 +36,7 @@ const RankCard = (props: RankCard) => {
                     {props.position}
                 </Postion>
 
-                <ProfileCard firstname={firstname} lastname={lastname} className="w-6 h-6 p-6 rounded-full flex items-center justify-center bg-blue-400 relative" textImageProps={{
+                <ProfileCard image="" firstname={firstname} lastname={lastname} className="w-6 h-6 p-6 rounded-full flex items-center justify-center bg-blue-400 relative" textImageProps={{
                     className: ""
                 }} icon={props.profileIcon} />
 

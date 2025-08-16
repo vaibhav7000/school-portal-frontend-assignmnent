@@ -3,12 +3,11 @@ import PrimaryHeading from "../Components/PrimaryHeading"
 import SecondaryHeading from "../Components/SecondaryHeading"
 import Text from "../Components/Text"
 import WrapperIcon from "../Components/Icon"
-import { ArrowBigDown, BowArrow, Crown, Filter, Flame, Medal, Trophy, Zap } from "lucide-react"
+import { BowArrow, Crown, Filter, Flame, Medal, Trophy, Zap } from "lucide-react"
 import CardWrapper from "../Wrappers/CardWrapper"
 import Input from "../Components/Input"
 import Dropdown from "../Components/Dropdown"
 import Button from "../Components/Button"
-import SchoolLeaderboard from "../Components/SchoolLeaderboard"
 import TopScrorerCard from "../Components/TopScorerCard";
 import { useAtomValue } from "jotai"
 import students from "../store/student"
@@ -23,7 +22,7 @@ const Leaderboard = () => {
     const finalData = useAtomValue(students);
 
     return (
-        <div className="flex flex-col gap-y-10 md:basis-[80%] overflow-scroll pl-10 pr-10 pt-6 sm:basis-full">
+       <CardWrapper className="rounded-none shadow-none flex flex-col gap-y-10 md:basis-[80%] overflow-scroll pl-4 pr-4 pt-6 sm:basis-full grow-1">
             <div className="flex md:flex-col md:gap-y-4 lg:flex-row lg:justify-between lg:items-center">
 
                 <div className="flex flex-col  gap-y-1">
@@ -94,7 +93,7 @@ const Leaderboard = () => {
                                 className: cn(index === 0 && "bg-first-position text-yellow-800", index === 1 && "bg-second-postion text-gray-900", index === 2 && "bg-orange-400 text-orange-700", index >=3 && "bg-blue-400 text-white font-medium")
                             }} profileIcon={index <= 2 ? <WrapperIcon className="absolute -top-1 right-0 " Element={Flame} ElementProps={{
                                 className: "text-red-400 h-4 w-4"
-                            }} /> : undefined} />
+                            }} /> : undefined} image={data.image} />
                         )
                     })}
                 </div>
@@ -150,7 +149,7 @@ const Leaderboard = () => {
                     className="flex flex-col items-center gap-y-1"
                 />
             </div>
-        </div>
+        </CardWrapper>
     )
 }
 

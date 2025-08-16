@@ -136,8 +136,8 @@ const Dashboard = () => {
 
 
     return (
-        <div className="flex flex-col gap-y-10 md:basis-[80%] overflow-scroll pl-10 pr-10 pt-6 sm:basis-full">
-            <div className="flex md:flex-col md:gap-y-4 lg:flex-row lg:justify-between lg:items-center">
+        <CardWrapper className="rounded-none shadow-none flex flex-col gap-y-10 md:basis-[80%] overflow-scroll pl-4 pr-4 pt-6 sm:basis-full grow-1">
+            <div className="flex flex-col gap-y-4 lg:flex-row lg:justify-between lg:items-center">
 
                 <div className="flex flex-col gap-y-1">
                     <PrimaryHeading heading="Greenwood Elementry School" className="capitalize bg-clip-text bg-linear-to-r from-cyan-500 to-blue-500 text-transparent font-bold text-2xl" />
@@ -153,12 +153,12 @@ const Dashboard = () => {
                 <ReportCards className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-2" cards={reportCards} />
             </div>
 
-            <div className="grid grid-cols-2 gap-8">
-                <CardWrapper>
+            <div className="grid grid-cols-2 gap-4">
+                <CardWrapper className="col-start-1 col-end-3 lg:col-start-1 md:col-end-2">
 
                 </CardWrapper>
 
-                <CardWrapper>
+                <CardWrapper className="col-start-1 col-end-3 lg:col-start-2 md:col-end-3">
                     <div>
                         <PrimaryHeading heading="Performance Distribution" className="capitalize bg-clip-text bg-linear-to-r from-cyan-500 to-blue-500 text-transparent font-bold text-xl" />
                         <SecondaryHeading heading="Overall accuracy breakdown across all students" />
@@ -291,7 +291,7 @@ const Dashboard = () => {
 
             </div>
 
-        </div>
+        </CardWrapper>
     )
 }
 
