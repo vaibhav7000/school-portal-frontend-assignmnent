@@ -6,7 +6,7 @@ import ReportCards from "../Components/ReportCards";
 import type { ReportCard } from "../Components/ReportCards";
 import { BarChart, Eye, Flame, GraduationCap, Hourglass, Medal, Star, Trophy, Users, Zap } from "lucide-react";
 import WrapperIcon from "../Components/Icon";
-import PieChart from "../Graphs/PieChart";
+import CustomPieChart from "../Graphs/PieChart";
 import type { ChartData, ChartOptions } from "chart.js";
 import tailwindColos from "../Utils/Tailwindcolors";
 import CardWrapper from "../Wrappers/CardWrapper";
@@ -81,7 +81,8 @@ const Dashboard = () => {
         responsive: false,
         plugins: {
             legend: {
-                position: "right",
+                position: "bottom",
+                display: false,
                 labels: {
                     usePointStyle: true,
                     pointStyle: "circle",
@@ -115,7 +116,8 @@ const Dashboard = () => {
         responsive: true,
         plugins: {
             legend: {
-                position: "bottom"
+                position: "bottom",
+                display: false,
             },
             title: {
                 display: false,
@@ -191,19 +193,46 @@ const Dashboard = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-                <CardWrapper className="col-start-1 col-end-3 lg:col-start-1 md:col-end-2">
-                    <CustomBarChart data={barChartData} options={barChartOptions} />
-                </CardWrapper>
+                <CardWrapper className="col-start-1 col-end-3 md:col-start-1 md:col-end-2 flex flex-col gap-y-4">
 
-                <CardWrapper className="col-start-1 col-end-3 lg:col-start-2 md:col-end-3">
                     <div>
                         <PrimaryHeading heading="Performance Distribution" className="capitalize bg-clip-text bg-linear-to-r from-cyan-500 to-blue-500 text-transparent font-bold text-xl" />
                         <SecondaryHeading heading="Overall accuracy breakdown across all students" />
                     </div>
 
-                    <div className="flex flex-col items-center justify-center">
-                        <PieChart data={data} options={options} />
+
+                    <div className="">
+                        <div className="">
+                            <CustomBarChart data={barChartData} options={barChartOptions} />
+                        </div>
                     </div>
+                </CardWrapper>
+
+                <CardWrapper className="col-start-1 col-end-3 md:col-start-2 md:col-end-3 flex flex-col gap-y-18">
+                    <div>
+                        <PrimaryHeading heading="Class-wise Student Enrollment" className="capitalize bg-clip-text bg-linear-to-r from-cyan-500 to-blue-500 text-transparent font-bold text-xl" />
+                        <SecondaryHeading heading="Student distribution across different grades" />
+                    </div>
+
+                    <div className="flex flex-col gap-y-10">
+                        <div className="flex flex-col items-center justify-center">
+                            <CustomPieChart data={data} options={options} />
+                        </div>
+
+                        <div>
+                            {data.labels?.map((label, index) => {
+                                return (
+                                    <div className="p-1 rounded-full flex flex-row gap-x-2 items-center" key={index}>
+                                        <div style={{
+                                            backgroundColor: data.datasets[0] && data.datasets[0].backgroundColor && `${data.datasets[0].backgroundColor[index]}`
+                                        }} className="p-1 rounded-full"></div>
+                                        <Text text={label} className="text-gray-500 text-sm" />
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+
                 </CardWrapper>
 
                 <CardWrapper className="col-start-1 col-end-3">

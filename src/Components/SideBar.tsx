@@ -24,7 +24,7 @@ const SideBar = () => {
                     <WrapperIcon Element={Menu} />
                 </button>
 
-                <div ref={asideBar} className="absolute md:right-0 md:top-0 right-7/12 left-0 sm:top-[56px] z-40 bottom-0 -translate-x-full md:translate-x-0 transition-all duration-200 flex flex-col justify-between h-screen" aria-label="Sidebar">
+                <div ref={asideBar} className="absolute md:right-0 md:top-0 right-7/12 left-0 top-[56px] z-40 bottom-0 -translate-x-full md:translate-x-0 transition-all duration-200 flex flex-col justify-between h-screen" aria-label="Sidebar">
                     <div className="h-full px-3 py-4 overflow-y-auto flex flex-col gap-y-2">
 
                         <div className="flex flex-row gap-x-3 items-center">

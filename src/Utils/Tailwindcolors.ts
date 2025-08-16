@@ -1,4 +1,4 @@
-type TailwindColors = Record<string, string>;
+export type TailwindColors = Record<string, string>;
 
 const tailwindColos: TailwindColors = {
     "red": "rgb(248, 113, 113)",      

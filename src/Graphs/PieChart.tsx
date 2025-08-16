@@ -9,12 +9,12 @@ interface PieChartProps {
 }
 
 
-const PieChart = ({data, options}: PieChartProps) => {
+const CustomPieChart = ({data, options}: PieChartProps) => {
 
     return (
         <Pie data={data} options={options} />
     )
 }
 
-export default PieChart
+export default CustomPieChart
 
