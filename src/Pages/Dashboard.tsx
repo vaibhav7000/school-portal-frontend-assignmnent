@@ -19,6 +19,7 @@ import Input from "../Components/Input";
 import Dropdown from "../Components/Dropdown";
 import AllStudents from "../Components/AllStudents";
 import CustomBarChart from "../Graphs/BarChart";
+import Button from "../Components/Button";
 
 const Dashboard = () => {
     const date: Date = useMemo(() => {
@@ -189,7 +190,7 @@ const Dashboard = () => {
             </div>
 
             <div>
-                <ReportCards className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-2" cards={reportCards} />
+                <ReportCards className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-4 gap-y-2" cards={reportCards} />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -214,7 +215,7 @@ const Dashboard = () => {
                         <SecondaryHeading heading="Student distribution across different grades" />
                     </div>
 
-                    <div className="flex flex-col gap-y-10">
+                    <div className="flex flex-col gap-y-10 w-full">
                         <div className="flex flex-col items-center justify-center">
                             <CustomPieChart data={data} options={options} />
                         </div>
@@ -335,21 +336,25 @@ const Dashboard = () => {
                             </div>
                         </div>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-4">
-                            {schoolLeaderboardData.map(data => {
-                                const { firstname, lastname, image, standard, accuracy, points } = data;
-                                return (
-                                    <AllStudents key={data.index} className="flex flex-row gap-x-2 items-center justify-between px-4 py-4" firstname={firstname} lastname={lastname} image={image} class={standard} accuracy={accuracy} points={points} imageProps={{
-                                        className: "h-20 w-20 rounded-full flex items-center justify-center"
-                                    }} textImageProps={{
-                                        className: "h-14 w-14 rounded-full flex items-center justify-center bg-blue-400 text-white border-2 border-white drop-shadow-xl"
-                                    }}
-                                        Icon={<WrapperIcon Element={Eye} ElementProps={{
-                                            className: "text-gray-500 h-6 w-6"
-                                        }} className="border-1 border-gray-400 px-2 py-1 rounded-lg cursor-pointer" />}
-                                    />
-                                )
-                            })}
+                        <div className="flex flex-col gap-y-6">
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-4">
+                                {schoolLeaderboardData.map(data => {
+                                    const { firstname, lastname, image, standard, accuracy, points } = data;
+                                    return (
+                                        <AllStudents key={data.index} className="flex flex-row gap-x-2 items-center justify-between px-4 py-4" firstname={firstname} lastname={lastname} image={image} class={standard} accuracy={accuracy} points={points} imageProps={{
+                                            className: "h-20 w-20 rounded-full flex items-center justify-center"
+                                        }} textImageProps={{
+                                            className: "h-14 w-14 rounded-full flex items-center justify-center bg-blue-400 text-white border-2 border-white drop-shadow-xl"
+                                        }}
+                                            Icon={<WrapperIcon Element={Eye} ElementProps={{
+                                                className: "text-gray-500 h-6 w-6"
+                                            }} className="border-1 border-gray-400 px-2 py-1 rounded-lg cursor-pointer" />}
+                                        />
+                                    )
+                                })}
+                            </div>
+
+                            <Button className="self-center bg-transparent px-4 text-gray-600 outline-1 outline-gray-600 shadow-xl font-semibold " title="Load More Students (233 remaining )" />
                         </div>
 
                     </div>

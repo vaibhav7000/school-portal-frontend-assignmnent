@@ -13,6 +13,7 @@ import { useAtomValue } from "jotai"
 import students from "../store/student"
 import RankCard from "../Components/RankCards"
 import cn from "../Utils/Styles"
+import Champion from "../Components/Champion"
 
 const Leaderboard = () => {
     const date: Date = useMemo(() => {
@@ -46,8 +47,46 @@ const Leaderboard = () => {
                 </div>
             </div>
 
-            <CardWrapper className="flex flex-row gap-x-2">
+            <CardWrapper className="px-0 py-0 flex flex-col gap-y-6 items-center">
+                <div className="basis-full py-8 bg-yellow-50 border-b-2 border-yellow-200 flex justify-center self-stretch gap-x-1">
+                    <WrapperIcon Element={Medal} ElementProps={{
+                        className: "h-6 w-6 text-blue-400"
+                    }} />
+                        <div className="flex flex-col gap-y-2">
+                            <Text text="Champions Podiums" className="text-transparent bg-linear-to-r from-cyan-500 to-blue-500 bg-clip-text text-xl font-semibold" />
+
+                            <Text text="This month's top 3 achievers" className="text-sm font-medium text-orange-800" />
+                        </div>
+
+                    <WrapperIcon Element={Medal} ElementProps={{
+                        className: "h-6 w-6 text-blue-400 "
+                    }} />
+                </div>
+
+                <div className="flex flex-row justify-start sm:gap-x-8 gap-x-2 mb-2 sm:mb-0">
+                    {finalData.slice(0, 3).map((data, index) => {
+                        return (
+                                <Champion key={index} index={index} firstname={data.firstname} lastname={data.lastname} image={data.image ?? ""} standard={data.standard} points={data.points} icons={index === 0 ? [<WrapperIcon Element={Trophy} className="absolute top-0 right-0" ElementProps={{
+                                    className: "text-yellow-600 h-6 w-6"
+                                }} />, <WrapperIcon Element={Flame} className="absolute top-0 right-0" ElementProps={{
+                                    className: "text-red-400 h-6 w-6"
+                                }} />, <WrapperIcon Element={Zap} className="absolute top-0 right-0" ElementProps={{
+                                    className: "text-yellow-600 h-6 w-6"
+                                }} />] : index === 1 ? [<WrapperIcon className="absolute top-0 right-0" ElementProps={{
+                                    className: "text-gray-600 h-6 w-6"
+                                }} Element={Medal} />] : [<WrapperIcon className="absolute top-0 right-0" Element={Medal} ElementProps={{
+                                    className: "text-orange-600 h-6 w-6"
+                                }} />]} barProps={{
+                                    className: cn('sm:px-8 px-4 pt-10 rounded-t-xl text-white flex flex-col gap-y-2 items-center sm:w-38 w-26 justify-center', index === 0 && 'h-50', index === 1 && 'h-46', index === 2 && 'h-42')
+                                }} className="flex flex-col items-center justify-end gap-y-6" />
+                        )
+                    })}
+                </div>
+            </CardWrapper>
+
+            <CardWrapper className="flex flex-row gap-2 flex-wrap">
                 <Input placeholder="Search Students..." className="outline-1 outline-gray-300 rounded-md px-10 py-4  grow-1" />
+
                 <Dropdown className="outline-1 rounded-md border-0 outline-gray-300 text-gray-500 px-2 py-2" options={[{
                     label: "All classes",
                     value: "All Classes"
@@ -70,7 +109,7 @@ const Leaderboard = () => {
                     value: "This month"
                 }]} className="outline-1 rounded-md border-0 outline-gray-300 text-gray-500 px-2 py-2" />
 
-                <Button className="outline-2 outline-gray-300 flex flex-row gap-x-1 items-center justify-center px-6 py-2 bg-transparent text-gray-400 font-medium">
+                <Button className="outline-1 outline-gray-300 flex flex-row gap-x-1 items-center justify-center px-6 py-2 bg-transparent text-gray-400 font-medium">
                     <WrapperIcon Element={Filter} ElementProps={{
                         className: "w-6 h-6"
                     }} />
@@ -100,7 +139,7 @@ const Leaderboard = () => {
             </CardWrapper>
 
 
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-4 gap-y-2">
                 <TopScrorerCard 
                     Icon={<WrapperIcon Element={Crown} ElementProps={{
                         className: "w-8 h-8 text-yellow-400"

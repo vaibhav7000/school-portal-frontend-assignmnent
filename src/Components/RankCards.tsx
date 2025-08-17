@@ -27,18 +27,20 @@ interface RankCard extends HTMLAttributes<HTMLDivElement> {
 
 const RankCard = (props: RankCard) => {
 
-    const {firstname, lastname, standard} = props;
+    const { firstname, lastname, standard } = props;
 
     return (
         <CardWrapper className={props.className}>
-            <div className="flex flex-row gap-x-4">
-                <Postion className={cn("h-6 w-6 rounded-full p-6 flex justify-center items-center", props.positionProps.className)}>
-                    {props.position}
-                </Postion>
+            <div className="flex flex-col sm:flex-row gap-4 ">
+                <div className="flex flex-col sm:flex-row gap-4">
+                    <Postion className={cn("h-6 w-6 rounded-full p-6 flex justify-center items-center", props.positionProps.className)}>
+                        {props.position}
+                    </Postion>
 
-                <ProfileCard image="" firstname={firstname} lastname={lastname} className="w-6 h-6 p-6 rounded-full flex items-center justify-center bg-blue-400 relative" textImageProps={{
-                    className: ""
-                }} icon={props.profileIcon} />
+                    <ProfileCard image="" firstname={firstname} lastname={lastname} className="w-6 h-6 p-6 rounded-full flex items-center justify-center bg-blue-400 relative" textImageProps={{
+                        className: ""
+                    }} icon={props.profileIcon} />
+                </div>
 
                 <div className="flex flex-col gap-y-2">
                     <Text text={`${firstname} ${lastname}`} />
@@ -49,8 +51,8 @@ const RankCard = (props: RankCard) => {
             <div className="flex flex-col gap-y-2">
                 <div className="flex items-center gap-x-2">
                     <div>
-                        <Text text={`${props.points}`} className="text-orange-600 font-semibold text-base"/>
-                        <Text text="points" className="text-gray-500 text-sm"/>
+                        <Text text={`${props.points}`} className="text-orange-600 font-semibold text-base" />
+                        <Text text="points" className="text-gray-500 text-sm" />
                     </div>
 
                     <Pill title={`${props.accuracy}%`} className="bg-green-300 text-green-500 text-xs outline-0 outline-transparent" />

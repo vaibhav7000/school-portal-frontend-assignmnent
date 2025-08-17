@@ -10,7 +10,7 @@ const CardWrapper = (props: CardWrapperProps) => {
     const { children, icon, postionElement } = props;
 
     return (
-        <div className={cn(`bg-white px-6 py-6 shadow-xl rounded-xl relative`, props.className)}>
+        <div className={cn(`bg-white px-6 py-6 shadow-custom-shadow rounded-xl relative`, props.className)}>
             {icon}
             {postionElement}
             

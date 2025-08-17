@@ -43,7 +43,7 @@ const Settings = () => {
         <CardWrapper className="rounded-none shadow-none flex flex-col gap-y-10 md:basis-[80%] overflow-scroll pl-4 pr-4 pt-6 sm:basis-full grow-1">
             <PrimaryHeading heading="Settings" className="text-primary-heading text-2xl font-bold" />
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4">
                 <CardWrapper className="flex flex-col gap-y-8">
                     <div className="flex flex-col gap-y-1">
                         <PrimaryHeading heading="Profile Settings" className="font-bold text-lg" />

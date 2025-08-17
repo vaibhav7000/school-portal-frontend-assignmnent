@@ -173,10 +173,10 @@ const Analytics = () => {
                     <CardWrapper className="bg-page flex flex-col gap-4">
                         <Text text={"Month-over-Month Improvement"} />
 
-                        <div className="flex flex-row flex-wrap gap-4">
+                        <div className="grid lg:grid-cols-1  xl:grid-cols-2 gap-4">
                             {performanceSkillsData.labels && performanceSkillsData.labels.map((label, index) => {
                                 return (
-                                    <CardWrapper key={index} className="flex basis-[48%] shadow-none outline-1 outline-gray-300 flex-row justify-between items-center px-4 py-4" >
+                                    <CardWrapper key={index} className="flex shadow-none outline-1 outline-gray-300 flex-row justify-between items-center px-4 py-4 grow-1 " >
                                         <Text text={label} className="capitalize text-sm font-medium" />
 
                                         <div className="flex flex-row gap-x-2 items-center">

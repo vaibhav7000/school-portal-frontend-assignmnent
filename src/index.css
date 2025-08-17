@@ -11,4 +11,5 @@
     --color-first-position: rgb(240, 177, 0);
     --color-second-postion: rgb(115, 115, 115);
     --color-third-position: rgb(254, 154, 0);
+    --shadow-custom-shadow: 0 0px 16px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
 }
