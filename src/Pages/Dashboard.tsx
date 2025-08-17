@@ -324,10 +324,10 @@ const Dashboard = () => {
                                 <SecondaryHeading heading="Our highest performing students this months with points and achievements" />
                             </div>
 
-                            <div className="flex gap-x-4 items-center">
-                                <Input placeholder="Search Students..." className="outline-1 outline-gray-300 rounded-md  xl:px-10 xl:py-4 px-6 py-4 grow lg:grow-0" />
+                            <div className="flex gap-4 items-center flex-wrap">
+                                <Input placeholder="Search Students..." className="outline-1 outline-gray-300 rounded-md  xl:px-10 xl:py-4 sm:px-6 sm:py-4 p-2 grow lg:grow-0" />
 
-                                <Dropdown className="outline-1 rounded-md border-0 outline-gray-300 text-gray-500 px-2 py-2" options={[{
+                                <Dropdown className="outline-1 rounded-md border-0 sm:grow-0 grow outline-gray-300 text-gray-500 px-2 py-2" options={[{
                                     label: "All Classes",
                                     value: "All Classes",
                                 }, {
