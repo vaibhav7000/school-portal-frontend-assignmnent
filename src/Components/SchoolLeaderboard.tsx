@@ -31,7 +31,7 @@ const SchoolLeaderboard = (props: SchoolLeaderboardProps) => {
     return (
        <CardWrapper icon={props.iconWrapper} postionElement={props.positionElement} className={props.className} >
             <ProfileCard firstname={props.firstname} lastname={props.lastname} image={props.image} imageProps={{
-                src: props.image,
+                src: image,
                 className: `${cn("outline-3 outline-solid " ,index === 0 && "outline-first-position", index === 1 && "outline-second-postion", index === 2 && "outline-third-position" ,props.imageProps?.className)}`,
                 loading: "lazy",
             }} className={cn("relative flex justify-center self-stretch", index < 3 && "bg-amber-200 rounded-full")}

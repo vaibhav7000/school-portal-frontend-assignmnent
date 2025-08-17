@@ -55,6 +55,13 @@ const Dashboard = () => {
         return result;
     }, []);
 
+    const colors: string[] = [
+        tailwindColos["green"],
+        tailwindColos["blue"],
+        tailwindColos["orange"],
+        tailwindColos["red"],
+    ]
+
     const data: ChartData<"pie", number[], string> = {
         labels: ["Excellent (90-100%)", "Good (80-89%)", "Average (70-79%)", "Needs Improvments"],
         datasets: [
@@ -62,16 +69,10 @@ const Dashboard = () => {
                 label: "Votes",
                 data: [12, 15, 3, 1],
                 backgroundColor: [
-                    tailwindColos["green"],
-                    tailwindColos["blue"],
-                    tailwindColos["orange"],
-                    tailwindColos["red"],
+                    ...colors
                 ],
                 borderColor: [
-                    tailwindColos["green"],
-                    tailwindColos["blue"],
-                    tailwindColos["orange"],
-                    tailwindColos["red"],
+                    ...colors
                 ],
                 borderWidth: 1
             }
@@ -225,7 +226,7 @@ const Dashboard = () => {
                                 return (
                                     <div className="p-1 rounded-full flex flex-row gap-x-2 items-center" key={index}>
                                         <div style={{
-                                            backgroundColor: data.datasets[0] && data.datasets[0].backgroundColor && `${data.datasets[0].backgroundColor[index]}`
+                                            backgroundColor: colors[index]
                                         }} className="p-1 rounded-full"></div>
                                         <Text text={label} className="text-gray-500 text-sm" />
                                     </div>

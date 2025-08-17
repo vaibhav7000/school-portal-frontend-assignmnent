@@ -81,21 +81,27 @@ const Analytics = () => {
         },
     }
 
+    const performanceColors: string[] = [tailwindColos["red"], tailwindColos["green"], tailwindColos["blue"], tailwindColos["orange"], tailwindColos["yellow"]];
+
     const performanceSkillsData: ChartData<"bar", number[], string> = {
         labels: ["Vocabulary", "Grammer", "Pronunciation", "Listening", "Speaking"],
         datasets: [{
             label: "Average",
             data: Array.from({ length: 5 }).map(() => Math.floor(Math.random() * 100) + 1),
-            backgroundColor: [tailwindColos["red"], tailwindColos["green"], tailwindColos["blue"], tailwindColos["orange"], tailwindColos["yellow"]]
+            backgroundColor: performanceColors
         }]
     }
+
+
+
+    const colors: string[] = [tailwindColos["red"], tailwindColos["green"], tailwindColos["blue"]]
 
     const studentPerformaceData: ChartData<"pie", number[], string> = {
         labels: ["Excellent (85-100%)", "Good (70-84%)", "Needs Improvements (<70%)"],
         datasets: [{
             label: "Performance",
             data: Array.from({ length: 3 }).map(() => Math.floor(Math.random() * 99) + 1),
-            backgroundColor: [tailwindColos["red"], tailwindColos["green"], tailwindColos["blue"]],
+            backgroundColor: colors,
         }]
     }
 
@@ -148,7 +154,7 @@ const Analytics = () => {
                                 return (
                                     <div className="p-1 rounded-full flex flex-row gap-x-2 items-center" key={index}>
                                         <div style={{
-                                            backgroundColor: studentPerformaceData.datasets[0] && studentPerformaceData.datasets[0].backgroundColor && `${studentPerformaceData.datasets[0].backgroundColor[index]}`
+                                            backgroundColor: colors[index],
                                         }} className="p-1 rounded-full"></div>
                                         <Text text={label} className="text-gray-500 text-sm" />
                                     </div>
@@ -166,7 +172,7 @@ const Analytics = () => {
                     </div>
 
                     <div className="flex flex-col gap-y-8">
-                        <Pipes titles={performanceSkillsData.labels ?? []} data={performanceSkillsData.datasets[0].data ?? []} colors={performanceSkillsData.datasets[0].backgroundColor ?? []} className="flex flex-col gap-y-2" />
+                        <Pipes titles={performanceSkillsData.labels ?? []} data={performanceSkillsData.datasets[0].data ?? []} colors={performanceColors} className="flex flex-col gap-y-2" />
                         <CustomBarChart data={performanceSkillsData} options={studentEngamenetTrendsOptions} />
                     </div>
 

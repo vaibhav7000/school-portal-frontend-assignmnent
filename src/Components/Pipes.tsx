@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from "react";
-import type { TailwindColors } from "../Utils/Tailwindcolors"
 import cn from "../Utils/Styles";
 import Text from "./Text";
 
